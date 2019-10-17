@@ -80,6 +80,7 @@ class Person {
   eat(food) {
     if (this.stomach.length < 10) {
       this.stomach.push(food);
+      return `I have ${this.stomach} in my tummy`
     }
   }
 
@@ -93,6 +94,20 @@ class Person {
     return `${this.name}, ${this.age}`;
   }
 }
+
+const fred = new Person('Freddy', 35);
+
+console.log(fred)
+fred.eat('someFood1');
+fred.eat('someFood2');
+fred.eat('someFood3');
+fred.eat('someFood4');
+fred.eat('someFood5');
+console.log(fred.stomach)
+console.log(fred.poop());
+console.log(fred.stomach);
+console.log(fred.toString());
+
 
 /*
     TASK 2
@@ -151,11 +166,21 @@ class Car {
     } else {
       this.odometer += maxDriveDistance;
       this.tank = 0;
-      return `I ran out of fuel at ${this.odometer} miles!`;
+      return `${this.model} ran out of fuel at ${this.odometer} miles!`;
     }
   }
 }
 
+const batmobile = new Car('BatMobile', 5);
+
+console.log(batmobile);
+batmobile.fill(40);
+console.log(batmobile.tank + " gallons");
+batmobile.drive(150)
+console.log(batmobile.tank + " gallons left");
+console.log(batmobile.odometer + " miles driven");
+console.log(batmobile.drive(250));
+console.log(batmobile.tank + " gallons left");
 /*
     TASK 3
       - Write a Baby constructor subclassing Person.
@@ -176,16 +201,28 @@ class Car {
 // };
 
 class Baby extends Person {
-  constructor(name, favoriteToy) {
-    super(name, age);
+  constructor(name, favoriteToy, age) {
+    super();
     this.name = name;
     this.favoriteToy = favoriteToy;
+    this.age = age;
   }
 
   play() {
     return `Playing with ${this.favoriteToy}`;
   }
 }
+
+const lucy = new Baby('Lucy', 'Trains', '6 months');
+
+console.log(lucy);
+lucy.eat('somefood1');
+lucy.eat('somefood3');
+lucy.eat('somefood2');
+console.log(lucy.stomach)
+lucy.poop()
+console.log(lucy.stomach)
+console.log(lucy.play());
 
 /* 
     TASK 4
