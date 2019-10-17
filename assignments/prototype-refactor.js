@@ -108,28 +108,53 @@ class Person {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
 
-function Car(model, milesPerGallon) {
-  this.model = model;
-  this.milesPerGallon = milesPerGallon;
-  this.tank = 0;
-  this.odometer = 0;
-}
+// function Car(model, milesPerGallon) {
+//   this.model = model;
+//   this.milesPerGallon = milesPerGallon;
+//   this.tank = 0;
+//   this.odometer = 0;
+// }
 
-Car.prototype.fill = function(gallons) {
-  this.tank += gallons;
-};
+// Car.prototype.fill = function(gallons) {
+//   this.tank += gallons;
+// };
 
-Car.prototype.drive = function(distance) {
-  let maxDriveDistance = this.tank * this.milesPerGallon;
-  if (maxDriveDistance > distance) {
-    this.odometer += distance;
-    this.tank -= distance / this.milesPerGallon;
-  } else {
-    this.odometer += maxDriveDistance;
+// Car.prototype.drive = function(distance) {
+//   let maxDriveDistance = this.tank * this.milesPerGallon;
+//   if (maxDriveDistance > distance) {
+//     this.odometer += distance;
+//     this.tank -= distance / this.milesPerGallon;
+//   } else {
+//     this.odometer += maxDriveDistance;
+//     this.tank = 0;
+//     return `I ran out of fuel at ${this.odometer} miles!`;
+//   }
+// };
+
+class Car {
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
     this.tank = 0;
-    return `I ran out of fuel at ${this.odometer} miles!`;
+    this.odometer = 0;
   }
-};
+
+  fill(gallons) {
+    this.tank += gallons;
+  }
+
+  drive(distance) {
+    let maxDriveDistance = this.tank * this.milesPerGallon;
+    if (maxDriveDistance > distance) {
+      this.odometer += distance;
+      this.tank -= distance / this.milesPerGallon;
+    } else {
+      this.odometer += maxDriveDistance;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
+}
 
 /*
     TASK 3
