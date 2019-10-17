@@ -163,17 +163,29 @@ class Car {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
-function Baby(name, favoriteToy) {
-  // Person.call(this, name, favoriteToy);
-  this.name = name;
-  this.favoriteToy = favoriteToy;
+// function Baby(name, favoriteToy) {
+//   // Person.call(this, name, favoriteToy);
+//   this.name = name;
+//   this.favoriteToy = favoriteToy;
+// }
+
+// Baby.prototype = Object.create(Person.prototype);
+
+// Baby.prototype.play = function() {
+//   return `Playing with ${this.favoriteToy}`;
+// };
+
+class Baby extends Person {
+  constructor(name, favoriteToy) {
+    super(name, age);
+    this.name = name;
+    this.favoriteToy = favoriteToy;
+  }
+
+  play() {
+    return `Playing with ${this.favoriteToy}`;
+  }
 }
-
-Baby.prototype = Object.create(Person.prototype);
-
-Baby.prototype.play = function() {
-  return `Playing with ${this.favoriteToy}`;
-};
 
 /* 
     TASK 4
